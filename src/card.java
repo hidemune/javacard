@@ -587,6 +587,8 @@ public class card {
     
     //html(CSSFrame)作成：Ver 2.0.0.6
     public static void writeHtmlCSSFrame() {
+        //タイムスタンプ
+        long now = System.currentTimeMillis();
         //すでにファイルまたはディレクトリあればエラー
         //環境設定画面の取得
         String[] strConf = {"","","","","","","","","",""};
@@ -723,6 +725,7 @@ public class card {
             }
             //page00000.html
             String pageTxt = FileToString("template/page.html");
+            pageTxt = pageTxt.replaceAll("&&TIMESTAMP&&", Long.toString(now));
             pageTxt = pageTxt.replaceAll("&&TITLE&&", Matcher.quoteReplacement(Html.encode(strConf[1])));
             pageTxt = pageTxt.replaceAll("&&COL1&&", Matcher.quoteReplacement(Html.encode(ArrStr[0].get(i))));
             pageTxt = pageTxt.replaceAll("&&COL2&&", Matcher.quoteReplacement(Html.encode(ArrStr[1].get(i))));
