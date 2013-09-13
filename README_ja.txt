@@ -51,9 +51,6 @@
 「lib」
 ・このアプリを実行する際に必要となるJavaのライブラリです。
 
-「LinuxProp」
-・Linux上でcard.shから実行した場合、設定ファイルはここに保存されます。
-
 「SampleSJIS」
 ・Shift-JIS形式のサンプルデータベースファイルです
 
@@ -63,8 +60,9 @@
 「template」
 ・HTML及びLibreOfficeドキュメントの自動生成の際のテンプレートファイルです
 
-「Card.jar」
+「javacard.jar」
 ・アプリケーション本体です。
+・NetBeansでコンパイルしたら、distフォルダからコピーしてきて配置してください。
 ・Windowsでは、これをダブルクリックすることで実行できます。
 
 「card.properties」
