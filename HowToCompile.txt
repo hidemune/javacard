@@ -3,7 +3,7 @@ Please compile by NetBeans 7.3.
 
 
 https://github.com/hidemune/javacard
-にアクセスして、「Download ZIP」ボタンでダウンロードした後、
+にアクセスして、「Download ZIP」ボタンでダウンロード・展開した後、
 
 bootstrapconnector.jar
 javax.mail.jar
@@ -14,5 +14,7 @@ unoil.jar
 
 を入手して lib フォルダに配置後、
 NetBeansでプロジェクトを開けば実行可能なはずです。
+ビルドして、生成された javacard.jar を、javacard-masterフォルダ（またはjavacardフォルダ）に
+コピーして実行してください。
 
-コンパイルできないなど問題がありましたらお気軽にお問い合わせ下さい。
+コンパイル・実行できないなど問題がありましたらお気軽にお問い合わせ下さい。
