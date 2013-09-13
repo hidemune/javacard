@@ -10,4 +10,4 @@ echo $CURDIR
 
 cd $CURDIR
 
-java -jar $CURDIR/Card.jar
+java -jar $CURDIR/javacard.jar
