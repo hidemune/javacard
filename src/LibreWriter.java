@@ -3,6 +3,7 @@ import com.sun.star.awt.Size;
 import com.sun.star.awt.XBitmap;
 import com.sun.star.beans.PropertyValue;
 import com.sun.star.beans.XPropertySet;
+import com.sun.star.comp.helper.Bootstrap;
 import com.sun.star.container.XNameContainer;
 import com.sun.star.document.XDocumentInsertable;
 import com.sun.star.frame.XController;
@@ -85,6 +86,7 @@ com.sun.star.frame.XDesktop makeDesktop = null;
                 // get the remote office component context
                 String oooExeFolder = LibreExePath;
                 makeContext = BootstrapSocketConnector.bootstrap(oooExeFolder);
+                //makeContext = com.sun.star.comp.helper.Bootstrap.bootstrap();
                 System.out.println("Connected to a running office ...");
 
                 // get the remote office service manager
@@ -226,6 +228,7 @@ com.sun.star.frame.XDesktop makeDesktop = null;
                 // get the remote office component context
                 String oooExeFolder = LibreExePath;
                 xContext = BootstrapSocketConnector.bootstrap(oooExeFolder);
+                //xContext = com.sun.star.comp.helper.Bootstrap.bootstrap();
                 System.out.println("Connected to a running office ...");
 
                 // get the remote office service manager
@@ -712,12 +715,12 @@ com.sun.star.frame.XDesktop makeDesktop = null;
             makeContext = null;
 
             //Add By HDM
-            //String oooExeFolder = "/usr/bin/libreoffice";
+            //String oooExeFolder = "/usr/bin/libreoffice4.1";
             String oooExeFolder = LibreExePath;
             makeContext = BootstrapSocketConnector.bootstrap(oooExeFolder);
             
             // get the remote office component context
-            //xContext = com.sun.star.comp.helper.Bootstrap.bootstrap();
+            //makeContext = com.sun.star.comp.helper.Bootstrap.bootstrap();
 
             // get the remote office service manager
             xMCF = makeContext.getServiceManager();

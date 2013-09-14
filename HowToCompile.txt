@@ -17,4 +17,9 @@ NetBeansでプロジェクトを開けば実行可能なはずです。
 ビルドして、生成された javacard.jar を、javacard-masterフォルダ（またはjavacardフォルダ）に
 コピーして実行してください。
 
+DebianでPDF作成機能を利用する場合は、
+libreoffice-java-common がインストールされている必要があります。
+また、プロパティファイル「card.properties」に以下のような記述が必要です。
+LibreExePath=/opt/libreoffice4.1/program
+
 コンパイル・実行できないなど問題がありましたらお気軽にお問い合わせ下さい。
