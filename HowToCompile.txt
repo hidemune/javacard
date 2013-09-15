@@ -23,3 +23,4 @@ libreoffice-java-common がインストールされている必要がありま�
 LibreExePath=/opt/libreoffice4.1/program
 
 コンパイル・実行できないなど問題がありましたらお気軽にお問い合わせ下さい。
+
