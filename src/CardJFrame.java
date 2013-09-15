@@ -1518,7 +1518,7 @@ public class CardJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jScrollPaneLVetoableChange
 
     private void jMenuItemVersionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVersionActionPerformed
-        JOptionPane.showMessageDialog(this, "Ver " + card.version + "\n\n作者：むうちょ\n　", "バージョンとか", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Ver " + card.version + "\n\n作者：田中 秀宗\n　", "バージョンとか", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jMenuItemVersionActionPerformed
 
     private void jListRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jListRKeyPressed

@@ -31,7 +31,7 @@ import javax.swing.JOptionPane;
  * @author hdm
  */
 public class card {
-    public static String version = "2.0.0.6 開発途中版";
+    public static String version = "2.0.0.6 (rev 20130916)";
     /*  【修正履歴】
      * SJISは機種依存文字や全角ハイフンが文字化けするため修正：Ver 2.0.0.1          2015.5.16
      * ヘルプのVersion表記の修正忘れを修正：Ver 2.0.0.2                            2015.5.16
