@@ -31,7 +31,7 @@ import javax.swing.JOptionPane;
  * @author hdm
  */
 public class card {
-    public static String version = "2.0.0.6 (rev 20130916)";
+    public static String version = "2.0.0.6 (rev 20131024)";
     /*  【修正履歴】
      * SJISは機種依存文字や全角ハイフンが文字化けするため修正：Ver 2.0.0.1          2015.5.16
      * ヘルプのVersion表記の修正忘れを修正：Ver 2.0.0.2                            2015.5.16
@@ -56,7 +56,7 @@ public class card {
      * メイン画面のヘルプメニューに「ヘルプ」を追加：Ver 2.0.0.5                         2013.6.3
      * URLの抽出・変換（HTML作成機能）を追加: Ver 2.0.0.6                             2013.7.10
      * HTML作成機能をCSSフレームに変更: Ver 2.0.0.6                                  2013.7.20
-     * 
+     * HTMLを開く際に、ブラウザのキャッシュを無効化                                   2013.10.24  
     */
     public static ConfigJFrame ConfFrm;
     public static CardJFrame CardFrm;
@@ -682,7 +682,7 @@ public class card {
                 if (isLast) {
                     //最後のアイテムは必ず表示
                     strOnaji = "";
-                    strLink = "<a href=\"" + page + "\" target=\"_top\">";
+                    strLink = "<a href=\"" + page + "?=" + Long.toString(now) + "\" target=\"_top\">";
                     strLinkE = "</a>";
                 }
                 //大見出し変わった場合のみ改行
