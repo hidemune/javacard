@@ -34,7 +34,7 @@ body{
 	top: 40px;
 	bottom: 0px;
 	width: 200px;
-	overflow: auto;
+	overflow: hidden;
 	z-index: 99;
 }
 #main{
