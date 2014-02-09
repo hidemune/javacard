@@ -2,7 +2,7 @@ javacard
 ========
 The "java version card database" This is a card database which also becomes a document generator in which an output of HTML and PDF is possible. 
 
-java版カード型データベース
+■java版カード型データベース■
 HTML及びPDFを出力可能なドキュメントジェネレータにもなる
 カード型データベースです。
 
