@@ -639,23 +639,27 @@ public class card {
             String mSakiWords[] = { ArrStr[0].get(i), ArrStr[1].get(i), ArrStr[2].get(i), ArrStr[3].get(i), ArrStr[4].get(i)};
             
             //jcontents.html 繰り返し部分
+            /*
             DecimalFormat f = new DecimalFormat("00000");
             String page = "page" + f.format(i + 1) + ".html";
             if (i == 0) {
                 page = "index.html";
             }
+            */
+            String page = ArrStr[4].get(i) + ".html";   //ファイル名を使用
+            
             String strLine = loopStr.replaceAll("&&PAGE&&", Matcher.quoteReplacement(page));
             strLine = strLine.replaceAll("&&COL1&&", Matcher.quoteReplacement(Html.encode(ArrStr[0].get(i))));
             strLine = strLine.replaceAll("&&COL2&&", Matcher.quoteReplacement(Html.encode(ArrStr[1].get(i))));
             strLine = strLine.replaceAll("&&COL3&&", Matcher.quoteReplacement(Html.encode(ArrStr[2].get(i))));
             strLine = strLine.replaceAll("&&COL4&&", Matcher.quoteReplacement(Html.encode(ArrStr[3].get(i))));
-            strLine = strLine.replaceAll("&&COL5&&", Matcher.quoteReplacement(Html.encode(ArrStr[4].get(i))));
+            strLine = strLine.replaceAll("&&COL5&&", ""); //ファイル名として使用
             strLine = strLine.replaceAll("&&INDEX&&", Matcher.quoteReplacement(String.valueOf(i + 1)));
             sb.append(strLine);
             sb.append("\n");
             
             //入れ子構造対応の目次：Ver 2.0.0.5
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 4; j++) {
                 //前と同じなら非表示
                 String strOnaji = "";
                 boolean isOnaji = true;     //見出し判定用初期値
@@ -670,7 +674,7 @@ public class card {
                 }
                 //最後のアイテムならリンクを表示
                 boolean isLast = false;
-                if (j >= 4) {
+                if (j >= 3) {
                     isLast = true;
                 }else {
                     if (ArrStr[j + 1].get(i).equals("")) {
@@ -701,6 +705,13 @@ public class card {
             String strSrcTxt = ArrStr[5].get(i);
             StringBuilder sbOrg = new StringBuilder();
             StringBuilder sbEnc = new StringBuilder();
+            
+            //ファイルコピー(画面トップ画像)
+            String fileName = "image/HP_Back.png";
+            File moto = new File(fileName);
+            File saki = new File(dirS + "/" + fileName);
+            fileCopy(moto, saki);
+            
             //イメージタグの行を編集　行ごとにエンコード
             String strList[] = strSrcTxt.split("\n");
             String imgtag = "&&IMAGE&&";
@@ -708,10 +719,10 @@ public class card {
                 int Idx = strList[j].indexOf(imgtag);
                 if (Idx == 0) {
                     //ファイル名取り出し
-                    String fileName = strList[j].substring(imgtag.length());
+                    fileName = strList[j].substring(imgtag.length());
                     //ファイルコピー
-                    File moto = new File(fileName);
-                    File saki = new File(dirS + "/" + fileName);
+                    moto = new File(fileName);
+                    saki = new File(dirS + "/" + fileName);
                     fileCopy(moto, saki);
                     //タグ作成
                     String tag = "<img border=\"0\" src=\"" + fileName + "\"><br>";
@@ -738,19 +749,17 @@ public class card {
             //前・次のファイル名
             String prePage;
             if (i > 0) {
-                prePage = "href=\"page" + f.format(i) + ".html\"";
-                if (i == 1) {
-                    prePage = "href=\"index.html\"";
-                }
+                prePage = "href=\"" + ArrStr[4].get(i - 1) + ".html\"";
             }else {
                 prePage = "";
             }
             String nextPage;
             if (i < ArrStr[0].size() - 1) {
-                nextPage = "href=\"page" + f.format(i + 2) + ".html\"";
+                nextPage = "href=\"" + ArrStr[4].get(i + 1) + ".html\"";
             }else {
                 nextPage = "";
             }
+            
             pageTxt = pageTxt.replaceAll("&&PRE&&", Matcher.quoteReplacement(prePage));
             pageTxt = pageTxt.replaceAll("&&NEXT&&", Matcher.quoteReplacement(nextPage));
             //JOptionPane.showMessageDialog(HtmlFrm, pageTxt);

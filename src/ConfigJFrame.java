@@ -49,7 +49,7 @@ public class ConfigJFrame extends javax.swing.JFrame {
         jTextField2.setText(str[3]);
         jTextField3.setText(str[4]);
         jTextField4.setText(str[5]);
-        jTextField5.setText(str[6]);
+        jTextField5.setText("ファイル名");
     }
     
     public void getText(String[] str) {
@@ -162,6 +162,7 @@ public class ConfigJFrame extends javax.swing.JFrame {
         jLabel7.setPreferredSize(new java.awt.Dimension(120, 13));
         jSplitPane14.setLeftComponent(jLabel7);
 
+        jTextField5.setEditable(false);
         jTextField5.setText("jTextField5");
         jSplitPane14.setRightComponent(jTextField5);
 

@@ -217,11 +217,11 @@ com.sun.star.frame.XDesktop makeDesktop = null;
                 m1maeWords[2] = card.ArrStr[1].get(Idx - 1);
                 m1maeWords[3] = card.ArrStr[2].get(Idx - 1);
                 m1maeWords[4] = card.ArrStr[3].get(Idx - 1);
-                m1maeWords[5] = card.ArrStr[4].get(Idx - 1);
+                m1maeWords[5] = "";  //ファイル名
                 m1maeWords[6] = card.ArrStr[5].get(Idx - 1);
                 m1maeWords[7] = String.valueOf(Idx + 1 - 1);
             }
-            String mSakiWords[] = { title, card.ArrStr[0].get(Idx), card.ArrStr[1].get(Idx), card.ArrStr[2].get(Idx), card.ArrStr[3].get(Idx), card.ArrStr[4].get(Idx), card.ArrStr[5].get(Idx), String.valueOf(Idx + 1) };
+            String mSakiWords[] = { title, card.ArrStr[0].get(Idx), card.ArrStr[1].get(Idx), card.ArrStr[2].get(Idx), card.ArrStr[3].get(Idx), "", card.ArrStr[5].get(Idx), String.valueOf(Idx + 1) };
             
             try {
                 //テンプレートファイル
