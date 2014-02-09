@@ -36,7 +36,7 @@ body{
 	top: 80px;
 	bottom: 0px;
 	width: 200px;
-	overflow: hidden;
+//	overflow: hidden;
 	z-index: 99;
 }
 #main{
@@ -45,7 +45,7 @@ body{
 	top: 80px;
 	right: 0px;
 	bottom: 0px;
-	overflow: auto;
+//	overflow: auto;
 	background-color: #ffffff;
 	color: #000000;
 }
@@ -111,7 +111,7 @@ body#iframe {
 }
 
 iframe {
-	overflow:visible;
+//	overflow:visible;
 }
 
 
