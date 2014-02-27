@@ -354,7 +354,8 @@ public class CardJFrame extends javax.swing.JFrame {
             int Idx = str.lastIndexOf(".");
             boolean flg = true;
             if (Idx > 0) {
-                ext = str.substring(Idx).toLowerCase();
+                ext = str.substring(Idx).trim().toLowerCase();
+                System.out.println("ext:" + ext);
                 if (ext.equals(".bmp")) {
                     //OK
                 } else if (ext.equals(".gif")) {
@@ -373,6 +374,7 @@ public class CardJFrame extends javax.swing.JFrame {
             } else {
                 //NG
                 flg = false;
+                JOptionPane.showMessageDialog(this, "拡張子を取得できません。\n（画像取り込み）");
             }
             //ディレクトリならNG
             if (file.isDirectory()) {

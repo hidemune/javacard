@@ -31,7 +31,7 @@ import javax.swing.JOptionPane;
  * @author hdm
  */
 public class card {
-    public static String version = "2.0.0.6 (rev 20131024)";
+    public static String version = "2.0.0.7 (rev 20140228)";
     /*  【修正履歴】
      * SJISは機種依存文字や全角ハイフンが文字化けするため修正：Ver 2.0.0.1          2015.5.16
      * ヘルプのVersion表記の修正忘れを修正：Ver 2.0.0.2                            2015.5.16
@@ -57,6 +57,7 @@ public class card {
      * URLの抽出・変換（HTML作成機能）を追加: Ver 2.0.0.6                             2013.7.10
      * HTML作成機能をCSSフレームに変更: Ver 2.0.0.6                                  2013.7.20
      * HTMLを開く際に、ブラウザのキャッシュを無効化                                   2013.10.24  
+     * HTMLのフレームトップに画像を表示するよう修正                                   2014.2.9
     */
     public static ConfigJFrame ConfFrm;
     public static CardJFrame CardFrm;

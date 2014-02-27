@@ -11,10 +11,10 @@
 @media only screen and (max-width: 1023px) {
 
 	#lt{
-		overflow: scroll;
+		overflow: auto;
 	}
 	iframe {
-		overflow: scroll;
+		overflow: auto;
 	}
 
 } /*デバイスの横幅が1023px以下の場合*/
