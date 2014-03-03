@@ -1129,6 +1129,11 @@ public class CardJFrame extends javax.swing.JFrame {
         jSplitPaneCol1.setLeftComponent(jLabelCol1);
 
         jTextFieldCol1.setText("jTextField1");
+        jTextFieldCol1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCol1ActionPerformed(evt);
+            }
+        });
         jSplitPaneCol1.setRightComponent(jTextFieldCol1);
 
         jSplitPaneStr1.setLeftComponent(jSplitPaneCol1);
@@ -1557,6 +1562,20 @@ public class CardJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "ヘルプファイルがみつかりません。", "ヘルプ", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jMenuItemHelpActionPerformed
+
+    private void jTextFieldCol1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCol1ActionPerformed
+        if (jTextFieldCol1.getText().equals("")) {
+            Date now = new Date();	//現在日時でDateを作成
+            DateFormat df;
+            if (card.Seireki0Gengo1 == 0){
+                df = new SimpleDateFormat("yyyy/MM/dd");
+            }else {
+                Locale locale = new Locale("ja", "JP", "JP");
+                df = new SimpleDateFormat("Gy/MM/dd", locale);
+            }
+            jTextFieldCol1.setText(df.format(now));
+        }
+    }//GEN-LAST:event_jTextFieldCol1ActionPerformed
     
     /**
      * @param args the command line arguments
