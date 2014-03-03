@@ -14,3 +14,5 @@ The run time of Java7 needs to be installed in execution.
 実行には Java7 のランタイムがインストールされている必要があります。
 
 http://auau.s4.valueserver.jp/javacard/
+
+NetBeans IDE 7.4で開発しています。
