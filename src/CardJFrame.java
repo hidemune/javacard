@@ -1568,10 +1568,10 @@ public class CardJFrame extends javax.swing.JFrame {
             Date now = new Date();	//現在日時でDateを作成
             DateFormat df;
             if (card.Seireki0Gengo1 == 0){
-                df = new SimpleDateFormat("yyyy/MM/dd");
+                df = new SimpleDateFormat("yyyy/MM/dd (E)");
             }else {
                 Locale locale = new Locale("ja", "JP", "JP");
-                df = new SimpleDateFormat("Gy/MM/dd", locale);
+                df = new SimpleDateFormat("Gy/MM/dd (E)", locale);
             }
             jTextFieldCol1.setText(df.format(now));
         }

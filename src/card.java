@@ -58,6 +58,7 @@ public class card {
      * HTML作成機能をCSSフレームに変更: Ver 2.0.0.6                                  2013.7.20
      * HTMLを開く際に、ブラウザのキャッシュを無効化                                   2013.10.24  
      * HTMLのフレームトップに画像を表示するよう修正                                   2014.2.9
+     * 項目1でEnterキーを押すと日付が設定されるよう修正。                               2014.3.3
     */
     public static ConfigJFrame ConfFrm;
     public static CardJFrame CardFrm;
