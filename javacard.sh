@@ -17,4 +17,4 @@ echo $CURDIR
 
 cd $CURDIR
 
-java -jar $CURDIR/javacard.jar
+java -jar $CURDIR/dist/javacard.jar
