@@ -31,7 +31,7 @@ import javax.swing.JOptionPane;
  * @author hdm
  */
 public class card {
-    public static String version = "2.0.0.7 (rev 20140303)";
+    public static String version = "2.0.0.7 (rev 20140624)";
     /*  【修正履歴】
      * SJISは機種依存文字や全角ハイフンが文字化けするため修正：Ver 2.0.0.1          2015.5.16
      * ヘルプのVersion表記の修正忘れを修正：Ver 2.0.0.2                            2015.5.16
@@ -59,6 +59,7 @@ public class card {
      * HTMLを開く際に、ブラウザのキャッシュを無効化                                   2013.10.24  
      * HTMLのフレームトップに画像を表示するよう修正                                   2014.2.9
      * 項目1でEnterキーを押すと日付が設定されるよう修正。                               2014.3.3
+     * HTML目次で、同じHタグは表示しないよう修正。                                      2014.6.24
     */
     public static ConfigJFrame ConfFrm;
     public static CardJFrame CardFrm;
@@ -696,10 +697,12 @@ public class card {
                 if ((j == 0) && ((!mSakiWords[j].equals(m1maeWords[j])))){
                     strBr = "<br>\n";
                 }
-                if (!Html.encode(ArrStr[j].get(i)).equals("")) {
-                    sbIreko.append(strBr);
-                    sbIreko.append("<h" + (j+1) + strOnaji + ">" + strLink + Html.encode(ArrStr[j].get(i)) + strLinkE + "</h" + (j+1) + ">");
-                    sbIreko.append("\n");
+                if (strOnaji.equals("")) {
+                    if (!Html.encode(ArrStr[j].get(i)).equals("")) {
+                        sbIreko.append(strBr);
+                        sbIreko.append("<h" + (j+1) + strOnaji + ">" + strLink + Html.encode(ArrStr[j].get(i)) + strLinkE + "</h" + (j+1) + ">");
+                        sbIreko.append("\n");
+                    }
                 }
             }
             
