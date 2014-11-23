@@ -1,4 +1,5 @@
 
+import com.sun.org.apache.xerces.internal.xs.StringList;
 import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Point;
@@ -20,16 +21,20 @@ import java.io.PrintWriter;
 import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import javafx.collections.transformation.FilteredList;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JSeparator;
 import javax.swing.JViewport;
+import javax.swing.UIManager;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
@@ -65,6 +70,7 @@ public class CardJFrame extends javax.swing.JFrame {
     JMenuItem menuDate = new JMenuItem("日付を入力");
     JMenuItem menuTime = new JMenuItem("時刻を入力");
     JMenuItem menuDateTime = new JMenuItem("日付と時刻を入力");
+    JMenuItem menuImage = new JMenuItem("画像を挿入");
     JMenuItem menuCopyV = new JMenuItem("コピー");
     JMenuItem menuSelectAllV = new JMenuItem("すべて選択");
     JMenuItem menuSendEditor = new JMenuItem("エディタに送る");
@@ -128,6 +134,7 @@ public class CardJFrame extends javax.swing.JFrame {
         popupmenu.add(menuDate);
         popupmenu.add(menuTime);
         popupmenu.add(menuDateTime);
+        popupmenu.add(menuImage);
         
         popupmenuV = new JPopupMenu();
         popupmenuV.add(menuCopyV);
@@ -213,6 +220,31 @@ public class CardJFrame extends javax.swing.JFrame {
                 }
                 Locale locale = new Locale("ja", "JP", "JP");
                 jTextAreaHon.insert(df.format(now), jTextAreaHon.getSelectionStart());
+            }
+        });
+        menuImage.addActionListener(new ActionListener() { 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //File filePath = new File("");
+                String path = "";
+                //ファイル選択ダイアログでファイル名・フォルダ名の変更モードを抑止　Ver 2.0.0.2     2013.5.17
+                UIManager.put("FileChooser.readOnly", Boolean.TRUE);
+                JFileChooser filechooser = new JFileChooser(path);
+                //ファイル選択ダイアログでcsvファイルのみ指定：Ver 2.0.0.2  2013.5.17
+                //CsvFilter filter = new CsvFilter();
+                //filechooser.addChoosableFileFilter(filter);
+                //filechooser.setFileFilter(filter);
+                //ファイルダイアログ呼び出し
+                if (filechooser.showOpenDialog(menuImage.getComponent()) == JFileChooser.APPROVE_OPTION) {
+                    File file = filechooser.getSelectedFile();
+                    //jTextFieldCSV.setText(file.getPath());
+                    //ファイルが存在しない場合は新規作成モード
+                    if (file.exists()) {
+                            java.util.List fileList = new ArrayList<String>();
+                            fileList.add(file);
+                            setFileName(fileList);
+                        }
+                    }
             }
         });
         menuCopyV.addActionListener(new ActionListener() { 
@@ -328,6 +360,7 @@ public class CardJFrame extends javax.swing.JFrame {
                     //For Linux (KDE Dolphin)
                     e.acceptDrop(DnDConstants.ACTION_COPY_OR_MOVE);
                     String str = (String)(transfer.getTransferData(DataFlavor.stringFlavor));
+                    str.replace("\r", "");
                     String fileListStr[] = str.split("\n");
                     java.util.ArrayList fileList = new java.util.ArrayList();
                     for (int i = 0; i < fileListStr.length; i++) {
@@ -349,7 +382,7 @@ public class CardJFrame extends javax.swing.JFrame {
             File file = (File) fileList.get(i);
             //buffer.append(file.getAbsolutePath());
             String str = file.getAbsolutePath();
-            //image でなければ処理しない　.bmp .gif .jpg .jpeg のみ
+            //image でなければ処理しない　.bmp .png .gif .jpg .jpeg のみ
             String ext = "";
             int Idx = str.lastIndexOf(".");
             boolean flg = true;

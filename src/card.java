@@ -31,7 +31,7 @@ import javax.swing.JOptionPane;
  * @author hdm
  */
 public class card {
-    public static String version = "2.0.0.7 (rev 20140624)";
+    public static String version = "2.0.0.7 (rev 20141123)";
     /*  【修正履歴】
      * SJISは機種依存文字や全角ハイフンが文字化けするため修正：Ver 2.0.0.1          2015.5.16
      * ヘルプのVersion表記の修正忘れを修正：Ver 2.0.0.2                            2015.5.16
@@ -60,6 +60,7 @@ public class card {
      * HTMLのフレームトップに画像を表示するよう修正                                   2014.2.9
      * 項目1でEnterキーを押すと日付が設定されるよう修正。                               2014.3.3
      * HTML目次で、同じHタグは表示しないよう修正。                                      2014.6.24
+     * 右クリックメニューに「画像取り込み」追加                                         2014.11.23
     */
     public static ConfigJFrame ConfFrm;
     public static CardJFrame CardFrm;
