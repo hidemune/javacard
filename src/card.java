@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.channels.FileChannel;
@@ -31,7 +30,7 @@ import javax.swing.JOptionPane;
  * @author hdm
  */
 public class card {
-    public static String version = "2.0.0.7 (rev 20141123)";
+    public static String version = "2.0.0.8 (rev 20151019)";
     /*  【修正履歴】
      * SJISは機種依存文字や全角ハイフンが文字化けするため修正：Ver 2.0.0.1          2015.5.16
      * ヘルプのVersion表記の修正忘れを修正：Ver 2.0.0.2                            2015.5.16
@@ -61,6 +60,7 @@ public class card {
      * 項目1でEnterキーを押すと日付が設定されるよう修正。                               2014.3.3
      * HTML目次で、同じHタグは表示しないよう修正。                                      2014.6.24
      * 右クリックメニューに「画像取り込み」追加                                         2014.11.23
+    * スマホでのWebページ表示に最適化                                                           2015.10.19
     */
     public static ConfigJFrame ConfFrm;
     public static CardJFrame CardFrm;
@@ -416,7 +416,7 @@ public class card {
                 }
                 if (!Html.encode(ArrStr[j].get(i)).equals("")) {
                     sbIreko.append(strBr);
-                    sbIreko.append("<h" + (j+1) + strOnaji + ">" + strLink + Html.encode(ArrStr[j].get(i)) + strLinkE + "</h" + (j+1) + ">");
+                    sbIreko.append("" + strLink + Html.encode(ArrStr[j].get(i)) + strLinkE + "");
                     sbIreko.append("\n");
                 }
             }
@@ -701,7 +701,10 @@ public class card {
                 if (strOnaji.equals("")) {
                     if (!Html.encode(ArrStr[j].get(i)).equals("")) {
                         sbIreko.append(strBr);
-                        sbIreko.append("<h" + (j+1) + strOnaji + ">" + strLink + Html.encode(ArrStr[j].get(i)) + strLinkE + "</h" + (j+1) + ">");
+                        //sbIreko.append("<h" + (j+1) + strOnaji + ">" + strLink + Html.encode(ArrStr[j].get(i)) + strLinkE + "</h" + (j+1) + ">");
+                        //sbIreko.append("<br/>");
+                        sbIreko.append("" + strLink + Html.encode(ArrStr[j].get(i)) + strLinkE + "");
+                        sbIreko.append("<br/>");
                         sbIreko.append("\n");
                     }
                 }
@@ -809,10 +812,10 @@ public class card {
         }
         
         //ファイル書き込み
-        str = FileToString("template/jcard.css");
+        str = FileToString("template/pure-drawer.css");
         str = str.replaceAll("&&TITLE&&", Matcher.quoteReplacement(Html.encode(strConf[1])));
         try {
-            File file = new File(dirS + File.separator + "jcard.css");
+            File file = new File(dirS + File.separator + "pure-drawer.css");
             // 常に新規作成
             PrintWriter bw;
             bw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF-8")));
@@ -822,7 +825,23 @@ public class card {
             bw.close();
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(ConfFrm, "エラーが発生しました\njcard.css");
+            JOptionPane.showMessageDialog(ConfFrm, "エラーが発生しました\npure-drawer.css");
+            return;
+        }
+        str = FileToString("template/pure-drawer.min.css");
+        str = str.replaceAll("&&TITLE&&", Matcher.quoteReplacement(Html.encode(strConf[1])));
+        try {
+            File file = new File(dirS + File.separator + "pure-drawer.min.css");
+            // 常に新規作成
+            PrintWriter bw;
+            bw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF-8")));
+            //html
+            bw.write(str);
+            bw.println();
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(ConfFrm, "エラーが発生しました\npure-drawer.min.css");
             return;
         }
         

@@ -1,5 +1,4 @@
 
-import com.sun.org.apache.xerces.internal.xs.StringList;
 import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Point;
@@ -24,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
-import javafx.collections.transformation.FilteredList;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
