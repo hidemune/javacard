@@ -19,6 +19,7 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 /*
  * To change this template, choose Tools | Templates
@@ -30,7 +31,7 @@ import javax.swing.JOptionPane;
  * @author hdm
  */
 public class card {
-    public static String version = "2.0.0.8 (rev 20151019)";
+    public static String version = "2.0.0.9 (rev 20160227)";
     /*  【修正履歴】
      * SJISは機種依存文字や全角ハイフンが文字化けするため修正：Ver 2.0.0.1          2015.5.16
      * ヘルプのVersion表記の修正忘れを修正：Ver 2.0.0.2                            2015.5.16
@@ -61,6 +62,7 @@ public class card {
      * HTML目次で、同じHタグは表示しないよう修正。                                      2014.6.24
      * 右クリックメニューに「画像取り込み」追加                                         2014.11.23
     * スマホでのWebページ表示に最適化                                                           2015.10.19
+    * JDBC対応                                                                                                              2016.2.27
     */
     public static ConfigJFrame ConfFrm;
     public static CardJFrame CardFrm;
@@ -939,6 +941,44 @@ public class card {
         if (JOptionPane.showConfirmDialog(CardFrm, "削除してもよろしいですか？") != JOptionPane.YES_OPTION) {
             return;
         }
+        
+        //jdbc
+        String[] strC = {"","","","","","","","","",""};
+        ConfFrm.getText(strC);
+        if (strC[0].startsWith("jdbc:postgresql")) {
+                try {
+                Properties prop = new Properties();
+                prop.setProperty("user", "testuser");
+                prop.setProperty("password", "");
+                
+                //  JDBC Driverのロード
+                Class.forName("org.postgresql.Driver");
+                // 接続
+                Connection conn =
+                DriverManager.getConnection
+                (strC[0], prop);
+                //実行
+                String sql = "DELETE FROM  data WHERE id = ?;";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, Integer.parseInt(ArrStr[4].get(idx)));
+                int rows = pstmt.executeUpdate();
+                
+                //画面のリストに反映
+                CardFrm.setList(true);
+
+                // ステートメントをクローズ
+                pstmt.close();
+                // 接続をクローズ
+                conn.close();
+
+                card.readCSV();
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(ConfFrm, "エラーが発生しました\n" + e.getLocalizedMessage());
+                e.printStackTrace();
+            }
+            return;
+        }
+        
         //CSVから１行削除
         for (int i = 0; i < ArrStr.length; i++) {
             ArrStr[i].remove(idx);
@@ -954,11 +994,59 @@ public class card {
         //１行変更して更新
         String[] str = {"","","","","","","","","",""};
         CardFrm.getText(str);
+        
+        //jdbc
+        String[] strC = {"","","","","","","","","",""};
+        ConfFrm.getText(strC);
+        if (strC[0].startsWith("jdbc:postgresql")) {
+                try {
+                Properties prop = new Properties();
+                prop.setProperty("user", "testuser");
+                prop.setProperty("password", "");
+                
+                //  JDBC Driverのロード
+                Class.forName("org.postgresql.Driver");
+                // 接続
+                Connection conn =
+                DriverManager.getConnection
+                (strC[0], prop);
+                //実行
+                String sql = "UPDATE data SET key1=?,key2=?,key3=?,key4=?,key5=?,honbun=?,sortkey=? WHERE id = ?;";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, str[0]);
+                pstmt.setString(2, str[1]);
+                pstmt.setString(3, str[2]);
+                pstmt.setString(4, str[3]);
+                pstmt.setString(5, str[4]);
+                pstmt.setString(6, str[5]);
+                pstmt.setString(7, str[4]);
+                
+                pstmt.setInt(8, Integer.parseInt(ArrStr[4].get(idx)));
+                int rows = pstmt.executeUpdate();
+                
+                //画面のリストに反映
+                CardFrm.setList(true);
+
+                // ステートメントをクローズ
+                pstmt.close();
+                // 接続をクローズ
+                conn.close();
+
+                card.readCSV();
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(ConfFrm, "エラーが発生しました\n" + e.getLocalizedMessage());
+                e.printStackTrace();
+            }
+            return;
+        }
+        
         for (int i = 0; i < ArrStr.length; i++) {
             //System.err.println(str[i]);
             ArrStr[i].remove(idx);
             ArrStr[i].add(idx, str[i]);
         }
+        
+        
         card.writeCSV(false, CardFrm);
         card.readCSV();
     }
@@ -970,6 +1058,50 @@ public class card {
         //CSVに１行追加
         String[] str = {"","","","","","","","","",""};
         CardFrm.getText(str);
+        
+        //jdbc
+        String[] strC = {"","","","","","","","","",""};
+        ConfFrm.getText(strC);
+        if (strC[0].startsWith("jdbc:postgresql")) {
+                try {
+                Properties prop = new Properties();
+                prop.setProperty("user", "testuser");
+                prop.setProperty("password", "");
+                
+                //  JDBC Driverのロード
+                Class.forName("org.postgresql.Driver");
+                // 接続
+                Connection conn =
+                DriverManager.getConnection
+                (strC[0], prop);
+                //実行
+                String sql = "INSERT INTO data (sortkey,key1,key2,key3,key4,key5,honbun) VALUES (?,?,?,?,?,?,?);";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, str[4]);
+                pstmt.setString(2, str[0]);
+                pstmt.setString(3, str[1]);
+                pstmt.setString(4, str[2]);
+                pstmt.setString(5, str[3]);
+                pstmt.setString(6, str[4]);
+                pstmt.setString(7, str[5]);
+                int rows = pstmt.executeUpdate();
+                
+                //画面のリストに反映
+                CardFrm.setList(true);
+
+                // ステートメントをクローズ
+                pstmt.close();
+                // 接続をクローズ
+                conn.close();
+
+                card.readCSV();
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(ConfFrm, "エラーが発生しました\n" + e.getLocalizedMessage());
+                e.printStackTrace();
+            }
+            return;
+        }
+        
         for (int i = 0; i < ArrStr.length; i++) {
             //System.err.println(str[i]);
             ArrStr[i].add(str[i]);
@@ -1015,6 +1147,71 @@ public class card {
         String[] strBefore = {"","","","","","","","","",""};
         ConfFrm.getText(strBefore);
         
+        //JDBC対応
+        if (strBefore[0].startsWith("jdbc:postgresql")) {
+            try {
+            Properties prop = new Properties();
+            prop.setProperty("user", "testuser");
+            prop.setProperty("password", "");
+
+            //  JDBC Driverのロード
+            Class.forName("org.postgresql.Driver");
+            // 接続
+            Connection conn =
+            DriverManager.getConnection
+            (strBefore[0], prop);
+            // ステートメントを作成
+            Statement stmt = conn.createStatement();
+            // 問合せの実行
+            ResultSet rset = stmt.executeQuery("SELECT * FROM data ORDER BY id;");
+
+                //配列の初期化
+                for (int i = 0; i < ArrStr.length; i++) {
+                    ArrStr[i].clear();
+                }
+                //環境設定画面の更新
+                //ConfFrm.setText(str);
+                //Card画面の更新
+                //CardFrm.setConf(str);
+                //リストのクリア
+                CardFrm.initList();
+                CardFrm.setUpdtMode(false);
+
+                // 問合せ結果の表示
+                while ( rset.next() ) {
+                    // 列番号による指定
+                    System.out.println(rset.getInt(1) + "\t" + rset.getString(2));
+                    String wk = rset.getString(3);
+                    ArrStr[0].add(wk);
+                    wk = rset.getString(4);
+                    ArrStr[1].add(wk);
+                    wk = rset.getString(5);
+                    ArrStr[2].add(wk);
+                    wk = rset.getString(6);
+                    ArrStr[3].add(wk);
+                    wk = rset.getString(1);
+                    ArrStr[4].add(wk);
+                    wk = rset.getString(8);
+                    ArrStr[5].add(wk);
+                }
+
+                //画面のリストに反映
+                CardFrm.setList(true);
+
+                // 結果セットをクローズ
+                rset.close();
+                // ステートメントをクローズ
+                stmt.close();
+                // 接続をクローズ
+                conn.close();
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(ConfFrm, "エラーが発生しました\n" + e.getLocalizedMessage());
+                e.printStackTrace();
+            }
+            //処理をここで抜ける
+            return;
+        }
+        
         File csv = new File(strBefore[0]); // CSVデータファイル
         if (!csv.exists()) {
             return;
@@ -1050,7 +1247,7 @@ public class card {
                         e.printStackTrace();
                     }
                 }
-            }
+            }            
             //環境設定画面の更新
             ConfFrm.setText(str);
             //Card画面の更新
@@ -1075,7 +1272,7 @@ public class card {
                     }catch (Exception e) {
                         wk = "";
                     }
-                    ArrStr[i].add(wk.replaceAll("\t", "\n"));
+                    ArrStr[i].add(wk);
                 }
             }
             //画面のリストに反映
@@ -1117,6 +1314,42 @@ public class card {
             if (JOptionPane.showConfirmDialog(parent, "登録してもよろしいですか？") != JOptionPane.YES_OPTION) {
                 return;
             }
+        }
+        
+        //JDBC対応
+        if (str[0].startsWith("jdbc:postgresql")) {
+            try {
+                Properties prop = new Properties();
+                prop.setProperty("user", "testuser");
+                prop.setProperty("password", "");
+                
+                //  JDBC Driverのロード
+                Class.forName("org.postgresql.Driver");
+                // 接続
+                Connection conn =
+                DriverManager.getConnection
+                (str[0], prop);
+                // ステートメントを作成
+                Statement stmt = conn.createStatement();
+                // 問合せの実行
+                ResultSet rset = stmt.executeQuery("SELECT * FROM data");
+                // 問合せ結果の表示
+                while ( rset.next() ) {
+                  // 列番号による指定
+                  System.out.println(rset.getInt(1) + "\t" + rset.getString(2));
+                       }
+                // 結果セットをクローズ
+                rset.close();
+                // ステートメントをクローズ
+                stmt.close();
+                // 接続をクローズ
+                conn.close();
+            }catch (Exception e){
+                JOptionPane.showMessageDialog(parent, "エラーが発生しました\n" + e.getLocalizedMessage());
+                e.printStackTrace();
+            }
+            //処理をここで抜ける
+            return;
         }
         
         //Card画面の更新
