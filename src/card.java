@@ -64,6 +64,7 @@ public class card {
     * スマホでのWebページ表示に最適化                                                           2015.10.19
     * JDBC対応                                                                                                              2016.2.27
     */
+    public static String configFile = "card.properties";
     public static ConfigJFrame ConfFrm;
     public static CardJFrame CardFrm;
     public static HtmlJFrame HtmlFrm;   //html作成：Ver 2.0.0.2
@@ -79,6 +80,10 @@ public class card {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        if (args.length > 0) {
+            configFile = args[0];
+            System.out.println("card.main()\n" + configFile);
+        }
         CardFrm = new CardJFrame();
         ConfFrm = new ConfigJFrame();
         HtmlFrm = new HtmlJFrame();     //html作成：Ver 2.0.0.2
@@ -93,7 +98,7 @@ public class card {
         Properties config = new Properties();
         try {
             //config.load(new FileInputStream("card.properties"));
-            config.load(new InputStreamReader(new FileInputStream("card.properties"), "UTF-8"));
+            config.load(new InputStreamReader(new FileInputStream(configFile), "UTF-8"));
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -1272,7 +1277,7 @@ public class card {
                     }catch (Exception e) {
                         wk = "";
                     }
-                    ArrStr[i].add(wk);
+                    ArrStr[i].add(wk.replace("\t", "\n"));
                 }
             }
             //画面のリストに反映
@@ -1475,7 +1480,7 @@ public class card {
         config.setProperty("csvFile", str2[0]);
         
         try {
-            config.store(new OutputStreamWriter(new FileOutputStream("card.properties"),"UTF-8"), "by HDM");
+            config.store(new OutputStreamWriter(new FileOutputStream(configFile),"UTF-8"), "by HDM");
         }catch(Exception e){
             e.printStackTrace();
         }
