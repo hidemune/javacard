@@ -1168,7 +1168,7 @@ public class card {
             // ステートメントを作成
             Statement stmt = conn.createStatement();
             // 問合せの実行
-            ResultSet rset = stmt.executeQuery("SELECT * FROM data ORDER BY id;");
+            ResultSet rset = stmt.executeQuery("SELECT * FROM data ORDER BY key1,id;");
 
                 //配列の初期化
                 for (int i = 0; i < ArrStr.length; i++) {
