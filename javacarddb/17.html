@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="pure-drawer.css"/>
+    </head>
+    <body>
+        <div class="pure-container" data-effect="pure-effect-push">
+            <input type="checkbox" id="pure-toggle-left" class="pure-toggle" data-toggle="left"/>
+            <label class="pure-toggle-label" for="pure-toggle-left" data-toggle-label="left"><span class="pure-toggle-icon"></span></label>
+
+            <nav class="pure-drawer" data-position="left">
+                <p style="height: 100%; padding: 100px 20px; margin: 0px 4px auto;">
+<!-- ここは左メニューです -->
+<iframe seamless src="jcontents.html?=1456930691682" height="60%" frameborder="0"></iframe>
+<!-- id="lt" ここまで左メニューです -->
+                </p>
+            </nav>   
+            
+            <div class="pure-pusher-container">
+                <div class="pure-pusher">
+                    <p style="width: 80%; height: 100%; margin: 100px auto;">
+
+18. 99.おまけ　素因数分解サンプル　　
+
+<br>
+'素因数分解のサンプルコードです。<br>
+'Sub&nbsp;Main&nbsp;が、素数一覧の作成、<br>
+'sub&nbsp;SoInsuuBunkai&nbsp;が、素因数分解の処理になります。<br>
+<br>
+Option&nbsp;VBASupport&nbsp;1<br>
+REM&nbsp;*****&nbsp;BASIC&nbsp;*****<br>
+Option&nbsp;Explicit<br>
+Sub&nbsp;Main<br>
+MsgBox(&quot;Start&quot;)<br>
+Dim&nbsp;max&nbsp;As&nbsp;Long<br>
+max&nbsp;=&nbsp;1000000<br>
+<br>
+Dim&nbsp;known(max)&nbsp;As&nbsp;Long<br>
+known(0)&nbsp;=&nbsp;2<br>
+Dim&nbsp;ii&nbsp;As&nbsp;Long<br>
+ii&nbsp;=&nbsp;0<br>
+Dim&nbsp;isPrime(max)&nbsp;As&nbsp;Boolean<br>
+Dim&nbsp;s&nbsp;As&nbsp;String<br>
+Dim&nbsp;i,&nbsp;j,&nbsp;lll&nbsp;As&nbsp;Long<br>
+<br>
+'初期化<br>
+For&nbsp;i&nbsp;=&nbsp;2&nbsp;To&nbsp;max<br>
+isPrime(i)&nbsp;=&nbsp;True<br>
+Next<br>
+'素数個分<br>
+For&nbsp;i&nbsp;=&nbsp;0&nbsp;To&nbsp;ii<br>
+if&nbsp;i&nbsp;&lt;=&nbsp;ii&nbsp;Then<br>
+For&nbsp;j&nbsp;=&nbsp;2&nbsp;To&nbsp;max&nbsp;\&nbsp;known(i)<br>
+isPrime(known(i)&nbsp;*&nbsp;j)&nbsp;=&nbsp;False<br>
+Next<br>
+End&nbsp;if<br>
+if&nbsp;i&nbsp;=&nbsp;ii&nbsp;Then<br>
+For&nbsp;lll&nbsp;=&nbsp;known(i)+&nbsp;1&nbsp;to&nbsp;max<br>
+If&nbsp;isPrime(lll)&nbsp;Then<br>
+ii&nbsp;=&nbsp;ii&nbsp;+&nbsp;1<br>
+known(ii)&nbsp;=&nbsp;lll<br>
+Exit&nbsp;For<br>
+End&nbsp;if<br>
+Next<br>
+End&nbsp;if<br>
+Next<br>
+ii&nbsp;=&nbsp;0<br>
+For&nbsp;i&nbsp;=&nbsp;2&nbsp;To&nbsp;max<br>
+If&nbsp;isPrime(i)&nbsp;Then<br>
+Cells(ii&nbsp;+&nbsp;1,&nbsp;1)&nbsp;=&nbsp;i<br>
+ii&nbsp;=&nbsp;ii&nbsp;+&nbsp;1<br>
+End&nbsp;if<br>
+Next<br>
+MsgBox(&quot;End&quot;)<br>
+<br>
+End&nbsp;Sub<br>
+<br>
+sub&nbsp;SoInsuuBunkai<br>
+dim&nbsp;x&nbsp;as&nbsp;long<br>
+dim&nbsp;i&nbsp;as&nbsp;long<br>
+dim&nbsp;waru&nbsp;as&nbsp;long<br>
+dim&nbsp;str&nbsp;as&nbsp;string<br>
+<br>
+'MsgBox(&quot;Start&quot;)<br>
+str&nbsp;=&nbsp;&quot;&quot;<br>
+<br>
+x&nbsp;=&nbsp;Cells(10,10)<br>
+<br>
+for&nbsp;i&nbsp;=&nbsp;1&nbsp;to&nbsp;300000<br>
+waru&nbsp;=&nbsp;val(Cells(i,1)<br>
+if&nbsp;waru&nbsp;=&nbsp;0&nbsp;then<br>
+exit&nbsp;for<br>
+end&nbsp;if<br>
+if&nbsp;(x&nbsp;=&nbsp;waru)&nbsp;then<br>
+str&nbsp;=&nbsp;str&nbsp;&amp;&nbsp;&quot;*&quot;&nbsp;&amp;&nbsp;waru<br>
+exit&nbsp;for<br>
+end&nbsp;if<br>
+if&nbsp;(x&nbsp;mod&nbsp;waru)&nbsp;=&nbsp;0&nbsp;then<br>
+'&nbsp;msgbox&nbsp;waru<br>
+str&nbsp;=&nbsp;str&nbsp;&amp;&nbsp;&quot;*&quot;&nbsp;&amp;&nbsp;waru<br>
+x&nbsp;=&nbsp;x&nbsp;/&nbsp;waru<br>
+i&nbsp;=&nbsp;i&nbsp;-&nbsp;1<br>
+endif<br>
+if&nbsp;(x&nbsp;&lt;&nbsp;waru)&nbsp;then<br>
+msgbox&nbsp;&quot;Error&quot;<br>
+exit&nbsp;for<br>
+endif<br>
+next&nbsp;i<br>
+<br>
+Cells(10,11)&nbsp;=&nbsp;&quot;'=&quot;&nbsp;&amp;&nbsp;mid(str,2)<br>
+'MsgBox(&quot;End&quot;)<br>
+<br>
+end&nbsp;sub<br>
+
+
+<br>
+<br>
+<a href="20.html">前へ</a> ／ <a >次へ</a>
+<!-- ########## ここまで本文です ########## -->
+                    </p>
+                </div>
+            </div>
+            
+            <label class="pure-overlay" for="pure-toggle-left" data-overlay="left"></label> 
+        </div>
+    </body>
+</html>
+

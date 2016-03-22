@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="pure-drawer.css"/>
+    </head>
+    <body>
+        <div class="pure-container" data-effect="pure-effect-push">
+            <input type="checkbox" id="pure-toggle-left" class="pure-toggle" data-toggle="left"/>
+            <label class="pure-toggle-label" for="pure-toggle-left" data-toggle-label="left"><span class="pure-toggle-icon"></span></label>
+
+            <nav class="pure-drawer" data-position="left">
+                <p style="height: 100%; padding: 100px 20px; margin: 0px 4px auto;">
+<!-- ここは左メニューです -->
+<iframe seamless src="jcontents.html?=1456930691682" height="60%" frameborder="0"></iframe>
+<!-- id="lt" ここまで左メニューです -->
+                </p>
+            </nav>   
+            
+            <div class="pure-pusher-container">
+                <div class="pure-pusher">
+                    <p style="width: 80%; height: 100%; margin: 100px auto;">
+
+12. 02.セル　単一のセルの値　　
+
+<br>
+Cells(&nbsp;row&nbsp;,&nbsp;col)&nbsp;で、セルの値の取得及び設定が可能です。<br>
+row&nbsp;は行番号で、数値で指定します。<br>
+col&nbsp;は列番号で、アルファベット文字列または数値（1から開始）で指定します。<br>
+<br>
+Option&nbsp;Explicit<br>
+Option&nbsp;VBASupport&nbsp;1<br>
+<br>
+REM&nbsp;&nbsp;*****&nbsp;&nbsp;BASIC&nbsp;&nbsp;*****<br>
+<br>
+Public&nbsp;msg&nbsp;As&nbsp;String<br>
+<br>
+Sub&nbsp;Main<br>
+Dim&nbsp;num&nbsp;as&nbsp;integer<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;=&nbsp;Cells(1,&quot;A&quot;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;num&nbsp;=&nbsp;1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Cells(1,1)&nbsp;=&nbsp;msg&nbsp;&amp;&nbsp;num<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MsgBox&nbsp;msg&nbsp;&amp;&nbsp;num<br>
+<br>
+End&nbsp;Sub<br>
+
+
+<br>
+<br>
+<a href="15.html">前へ</a> ／ <a href="21.html">次へ</a>
+<!-- ########## ここまで本文です ########## -->
+                    </p>
+                </div>
+            </div>
+            
+            <label class="pure-overlay" for="pure-toggle-left" data-overlay="left"></label> 
+        </div>
+    </body>
+</html>
+

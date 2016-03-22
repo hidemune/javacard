@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="pure-drawer.css"/>
+    </head>
+    <body>
+        <div class="pure-container" data-effect="pure-effect-push">
+            <input type="checkbox" id="pure-toggle-left" class="pure-toggle" data-toggle="left"/>
+            <label class="pure-toggle-label" for="pure-toggle-left" data-toggle-label="left"><span class="pure-toggle-icon"></span></label>
+
+            <nav class="pure-drawer" data-position="left">
+                <p style="height: 100%; padding: 100px 20px; margin: 0px 4px auto;">
+<!-- ここは左メニューです -->
+<iframe seamless src="jcontents.html?=1456930691682" height="60%" frameborder="0"></iframe>
+<!-- id="lt" ここまで左メニューです -->
+                </p>
+            </nav>   
+            
+            <div class="pure-pusher-container">
+                <div class="pure-pusher">
+                    <p style="width: 80%; height: 100%; margin: 100px auto;">
+
+6. 01.基本　他のモジュールや関数をまたいで同じ変数を使用　　
+
+<br>
+<br>
+Public&nbsp;変数名&nbsp;As&nbsp;Long<br>
+<br>
+のように、Publicステートメントを利用すると、<br>
+他のモジュールや、関数を跨いで同じ変数を利用できます。<br>
+<br>
+記述位置は、コードの最初の、Option&nbsp;Explicitの下、Sub&nbsp;関数名の前に記述します。<br>
+<br>
+サンプル<br>
+Option&nbsp;Explicit<br>
+Option&nbsp;VBASupport&nbsp;1<br>
+<br>
+REM&nbsp;&nbsp;*****&nbsp;&nbsp;BASIC&nbsp;&nbsp;*****<br>
+<br>
+Public&nbsp;msg&nbsp;As&nbsp;String<br>
+<br>
+Sub&nbsp;Main<br>
+Dim&nbsp;num&nbsp;as&nbsp;integer<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;=&nbsp;&quot;テスト&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;num&nbsp;=&nbsp;1<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MsgBox&nbsp;msg&nbsp;&amp;&nbsp;num<br>
+<br>
+End&nbsp;Sub<br>
+
+
+<br>
+<br>
+<a href="9.html">前へ</a> ／ <a href="11.html">次へ</a>
+<!-- ########## ここまで本文です ########## -->
+                    </p>
+                </div>
+            </div>
+            
+            <label class="pure-overlay" for="pure-toggle-left" data-overlay="left"></label> 
+        </div>
+    </body>
+</html>
+

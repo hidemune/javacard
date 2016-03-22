@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="pure-drawer.css"/>
+    </head>
+    <body>
+        <div class="pure-container" data-effect="pure-effect-push">
+            <input type="checkbox" id="pure-toggle-left" class="pure-toggle" data-toggle="left"/>
+            <label class="pure-toggle-label" for="pure-toggle-left" data-toggle-label="left"><span class="pure-toggle-icon"></span></label>
+
+            <nav class="pure-drawer" data-position="left">
+                <p style="height: 100%; padding: 100px 20px; margin: 0px 4px auto;">
+<!-- ここは左メニューです -->
+<iframe seamless src="jcontents.html?=1456930691682" height="60%" frameborder="0"></iframe>
+<!-- id="lt" ここまで左メニューです -->
+                </p>
+            </nav>   
+            
+            <div class="pure-pusher-container">
+                <div class="pure-pusher">
+                    <p style="width: 80%; height: 100%; margin: 100px auto;">
+
+4. 01.基本　マクロの実行方法　　
+
+<br>
+LibreOffice&nbsp;Calc&nbsp;を開いたらマクロの実行ボタンを配置します。<br>
+<br>
+「表示」ー「ツールバー」ー「フォームデザイン」で「フォームデザインツールバー」を表示します。<br>
+「デザインモードの切り替え」でデザインモードのオン・オフ（実行モード）を切り替えます。<br>
+<br>
+デザインモードはオンにしておいてください。<br>
+「表示」ー「ツールバー」ー「フォームコントロール」で「フォームコントロールツールバー」を表示します。<br>
+「ボタン」をクリックして、シートをドラッグすると、そのサイズのボタンが配置されます。<br>
+<br>
+貼り付けたボタンを右クリックして、「コントロール」を選択します。<br>
+「タイトル」を「実行」に変更して閉じます。<br>
+<br>
+マクロの新規作成のために、<br>
+「ツール」ー「マクロ」ー「マクロの管理」ー「LibreOffice&nbsp;Basic」を選択します。<br>
+「マクロの記録先」は、開いているブックのStandardにします。（ここでは「無題１」のStandad）<br>
+右の「新規作成」をクリックします。<br>
+「Module1」と表示されるので、そのまま「OK」をクリックします。<br>
+<br>
+LibreOffice&nbsp;Basic&nbsp;エディタが表示されます。<br>
+<br>
+<br>
+REM&nbsp;&nbsp;*****&nbsp;&nbsp;BASIC&nbsp;&nbsp;*****<br>
+<br>
+Sub&nbsp;Main<br>
+<br>
+End&nbsp;Sub<br>
+<br>
+<br>
+と、エディタに表示されているので、以下のように入力してください。<br>
+サンプルコードは以下のようになります。<br>
+<br>
+<br>
+Option&nbsp;Explicit<br>
+Option&nbsp;VBASupport&nbsp;1<br>
+<br>
+REM&nbsp;&nbsp;*****&nbsp;&nbsp;BASIC&nbsp;&nbsp;*****<br>
+<br>
+Sub&nbsp;Main<br>
+Dim&nbsp;msg&nbsp;As&nbsp;String<br>
+Dim&nbsp;num&nbsp;as&nbsp;integer<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;msg&nbsp;=&nbsp;&quot;テスト&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;num&nbsp;=&nbsp;1<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MsgBox&nbsp;msg&nbsp;&amp;&nbsp;num<br>
+<br>
+End&nbsp;Sub<br>
+<br>
+<br>
+では、実行してみましょう。<br>
+<br>
+実行ボタンを右クリックして、「コントロール」を選択します。<br>
+「属性&nbsp;プッシュボタン」の「実行時」の右にテキストボックスがあり、更にその右に「...」というボタンがありますのでクリックしてください。<br>
+<br>
+「割り当て」の「マクロ」ボタンをクリックしてください。<br>
+先ほど作ったStandard-Module1-Mainを選択して、OKをクリックします。<br>
+<br>
+実行時の割り当てが、「割り当てられたアクション」欄に表示されるのを確認してください。<br>
+<br>
+フォームデザインツールバーの、「デザインモードの切り替え」をクリックして、実行モードに変更します。<br>
+シートに先ほど貼り付けた「実行」ボタンをクリックしてください。<br>
+<br>
+メッセージボックス「テスト１」が表示されれば、開発準備OKです。<br>
+
+
+<br>
+<br>
+<a href="7.html">前へ</a> ／ <a href="9.html">次へ</a>
+<!-- ########## ここまで本文です ########## -->
+                    </p>
+                </div>
+            </div>
+            
+            <label class="pure-overlay" for="pure-toggle-left" data-overlay="left"></label> 
+        </div>
+    </body>
+</html>
+

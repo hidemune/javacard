@@ -31,7 +31,7 @@ import java.sql.*;
  * @author hdm
  */
 public class card {
-    public static String version = "2.0.0.9 (rev 20160227)";
+    public static String version = "2.0.1.0 (rev 20160323)";
     /*  【修正履歴】
      * SJISは機種依存文字や全角ハイフンが文字化けするため修正：Ver 2.0.0.1          2015.5.16
      * ヘルプのVersion表記の修正忘れを修正：Ver 2.0.0.2                            2015.5.16
@@ -63,6 +63,7 @@ public class card {
      * 右クリックメニューに「画像取り込み」追加                                         2014.11.23
     * スマホでのWebページ表示に最適化                                                           2015.10.19
     * JDBC対応                                                                                                              2016.2.27
+    * 各種エラーチェック追加                                                            2016.3.23
     */
     public static String configFile = "card.properties";
     public static ConfigJFrame ConfFrm;
@@ -82,6 +83,10 @@ public class card {
     public static void main(String[] args) {
         if (args.length > 0) {
             configFile = args[0];
+            if (!configFile.endsWith(".properties")) {
+                JOptionPane.showMessageDialog(HtmlFrm, "パラメタのプロパティファイルの拡張子は、\n.propertiesである必要があります。\n終了します。\n");
+                return;
+            }
             System.out.println("card.main()\n" + configFile);
         }
         CardFrm = new CardJFrame();
@@ -605,6 +610,9 @@ public class card {
         String[] strConf = {"","","","","","","","","",""};
         ConfFrm.getText(strConf);
         String dirS = strConf[0].replaceAll(".csv", "").replaceAll(".CSV", "");
+        if (strConf[0].startsWith("jdbc:")) {
+            dirS = strConf[0].substring(strConf[0].lastIndexOf("/")+1);
+        }
         String imgDirStr = dirS + "/image";
         //JOptionPane.showMessageDialog(HtmlFrm, dirS);
         File dir = new File(dirS);
@@ -1305,6 +1313,9 @@ public class card {
             String errMsg = "";
             if (str[0].equals("")) {
                 errMsg = errMsg + "CSVファイル名を指定してください\n";
+            }
+            if (!(str[0].toUpperCase().endsWith(".CSV")) && !(str[0].startsWith("jdbc:postgresql://"))) {
+                errMsg = errMsg + "ファイル名は拡張子を.CSVか、\njdbc:postgresql://で始まる文字列を指定してください\n";
             }
             if (str[1].equals("")) {
                 errMsg = errMsg + "データベースタイトルを指定してください\n";
