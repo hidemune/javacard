@@ -1,22 +1,22 @@
 #by HDM
-#Sun Apr 17 22:08:14 JST 2016
-csvFile=MacMemo.csv
-FontFamily=Osaka-Mono
+#Wed Mar 23 06:17:32 JST 2016
+csvFile=Memo.csv
+FontFamily=MS gothic
 size9=100
 size8=100
-size7=100
-size6=33
-size5=2
+size7=101
+size6=22
+size5=22
 LKeyMode=1
-size4=2
+size4=22
 size3=22
-Tab=1
+Tab=0
 RKeyMode=1
 size2=24
 size1=299
-y=429
+y=56
 size0=121
-x=873
+x=227
 MailHost=
 RKey=1
 Seireki0Gengo1=1
@@ -26,11 +26,11 @@ size11=100
 MailFrom=
 size10=100
 LKey=0
-width=1000
-Editor=open
+width=1004
+Editor=notepad.exe
 MailTitle=From JavaCard
 MailTo=
-LibreExePath=/Applications/LibreOffice.app/Contents/MacOS
+LibreExePath=/opt/libreoffice5.1/program
 MojiCode=0
 MailUser=
 MailPass=

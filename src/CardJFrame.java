@@ -262,8 +262,12 @@ public class CardJFrame extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 //メモ帳で開く
                 //tmpファイルに保存
+                String fullpath = "";
                 try {
-                    File tmp = new File("./tmp.txt"); // CSVデータファイル
+                    JFileChooser jf = new JFileChooser();//.getFileSystemView().getDefaultDirectory().toString();
+                    fullpath = jf.getFileSystemView().getDefaultDirectory().toString();
+                    fullpath = fullpath + "/tmp.txt";
+                    File tmp = new File(fullpath); // CSVデータファイル
                     // 常に新規作成
                     PrintWriter bw;
                     bw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tmp))));
@@ -278,7 +282,10 @@ public class CardJFrame extends javax.swing.JFrame {
                 //エディタを開く
                 try {
                     Runtime r = Runtime.getRuntime();
-                    r.exec(new String[] {card.Editor , "./tmp.txt"});
+                    String wk = card.Editor + "\t" + fullpath;
+                    String execStr[] = wk.split("\t");
+                    r.exec(execStr);
+                    //r.exec(new String[] {execStr , fullpath});
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     return;
