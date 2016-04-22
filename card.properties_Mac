@@ -1,19 +1,18 @@
 #by HDM
-#Sat Apr 23 05:37:06 JST 2016
+#Sat Apr 23 05:33:43 JST 2016
 csvFile=MacMemo.csv
-FontSize=21
 FontFamily=Osaka-Mono
 size9=100
 size8=100
 size7=100
 size6=33
-size5=29
+size5=2
 LKeyMode=1
-size4=29
-size3=29
+size4=2
+size3=22
 Tab=0
 RKeyMode=1
-size2=29
+size2=24
 size1=299
 y=429
 size0=121
@@ -22,12 +21,12 @@ MailHost=
 RKey=1
 Seireki0Gengo1=1
 MailSmtpHost=
-height=811
+height=513
 size11=100
 MailFrom=
 size10=100
 LKey=0
-width=1395
+width=1000
 Editor=open
 MailTitle=From JavaCard
 MailTo=

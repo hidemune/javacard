@@ -77,7 +77,7 @@ public class card {
     public static String Editor;
     public static String LibreExePath;
     public static String fntName = "";
-    
+    public static String fntSize = "";
     /**
      * @param args the command line arguments
      */
@@ -166,8 +166,10 @@ public class card {
         MailFrm.setMailFrm(str);
         
         fntName = config.getProperty("FontFamily", "Dialog");
+        fntSize = config.getProperty("FontSize", "14");
         System.out.println(fntName);
-        Font fnt = new Font(fntName,Font.PLAIN,14);
+        System.out.println(fntSize);
+        Font fnt = new Font(fntName,Font.PLAIN,Integer.parseInt(fntSize));
         CardFrm.setFont(fnt);
         
         //CSVファイル名
@@ -1474,6 +1476,7 @@ public class card {
         config.setProperty("LibreExePath", LibreExePath);
         
         config.setProperty("FontFamily", fntName);
+        config.setProperty("FontSize", fntSize);
         
         //メール送信に対応：Ver 2.0.0.3
         String[] str = {"","","","","","","","","",""};
