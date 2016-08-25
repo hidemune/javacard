@@ -65,6 +65,7 @@ public class card {
     * JDBC対応                                                                             2016.2.27
     * 各種エラーチェック追加                                                            2016.3.23
     * Mac対応、エディタに送る際のtmpファイルの置き場をデフォルトのフォルダに変更                2016.4.17
+    * csv出力時に、Tab文字列に対応                                                      2016.8.25
     */
     public static String configFile = "card.properties";
     public static ConfigJFrame ConfFrm;
@@ -1288,7 +1289,7 @@ public class card {
                     }catch (Exception e) {
                         wk = "";
                     }
-                    ArrStr[i].add(wk.replace("\t", "\n"));
+                    ArrStr[i].add(wk.replace("\t", "\n").replaceAll("%%tab%%", "\t"));
                 }
             }
             //画面のリストに反映
@@ -1413,7 +1414,7 @@ public class card {
                 bw.write(ArrStr[2].get(i) + "\t");
                 bw.write(ArrStr[3].get(i) + "\t");
                 bw.write(ArrStr[4].get(i) + "\t");
-                bw.write(ArrStr[5].get(i).replaceAll("\n", "\t"));
+                bw.write(ArrStr[5].get(i).replaceAll("\t", "%%tab%%").replaceAll("\n", "\t"));
                 bw.println();
             }
             bw.close();
