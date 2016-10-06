@@ -1127,7 +1127,7 @@ public class CardJFrame extends javax.swing.JFrame {
         jTextAreaHon.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextAreaHon.setLineWrap(true);
         jTextAreaHon.setRows(5);
-        jTextAreaHon.setTabSize(6);
+        jTextAreaHon.setTabSize(4);
         jScrollPane3.setViewportView(jTextAreaHon);
 
         jSplitPaneStr5.setRightComponent(jScrollPane3);

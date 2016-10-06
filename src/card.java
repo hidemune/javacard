@@ -31,7 +31,7 @@ import java.sql.*;
  * @author hdm
  */
 public class card {
-    public static String version = "2.0.1.1 (rev 20160417)";
+    public static String version = "2.0.1.3 (rev 20161006)";
     /*  【修正履歴】
      * SJISは機種依存文字や全角ハイフンが文字化けするため修正：Ver 2.0.0.1          2015.5.16
      * ヘルプのVersion表記の修正忘れを修正：Ver 2.0.0.2                            2015.5.16
@@ -65,7 +65,7 @@ public class card {
     * JDBC対応                                                                             2016.2.27
     * 各種エラーチェック追加                                                            2016.3.23
     * Mac対応、エディタに送る際のtmpファイルの置き場をデフォルトのフォルダに変更                2016.4.17
-    * csv出力時に、Tab文字列に対応                                                      2016.8.25
+    * csv出力時に、Tab文字列に対応                                                      2016.10.07
     */
     public static String configFile = "card.properties";
     public static ConfigJFrame ConfFrm;
